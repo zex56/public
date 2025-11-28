@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVerse - Toko Gadget Terlengkap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --dark: #1a202c;
+            --light: #f7fafc;
+            --success: #48bb78;
+            --danger: #f56565;
+            --warning: #ed8936;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animasi Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: move 25s linear infinite;
+            bottom: -150px;
+        }
+
+        .bg-animation span:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+
+        .bg-animation span:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .bg-animation span:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s;
+        }
+
+        .bg-animation span:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .bg-animation span:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        .bg-animation span:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s;
+        }
+
+        .bg-animation span:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s;
+        }
+
+        .bg-animation span:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+
+        .bg-animation span:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+
+        .bg-animation span:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 11s;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        /* Header */
+        header {
+            background: rgba(26, 32, 44, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            position: relative;
+            animation: fadeInUp 1s 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .search-bar button:hover {
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Categories */
+        .categories {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .category-tab {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid transparent;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .category-tab:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .category-tab.active {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+
+        /* Products Grid */
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-description {
+            color: #718096;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #fbbf24;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .add-to-cart:active {
+            transform: scale(0.98);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-close {
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .cart-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            animation: slideIn 0.3s;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #cbd5e0;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkout-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: -400px;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: right 0.3s;
+            z-index: 3000;
+        }
+
+        .notification.show {
+            right: 20px;
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+            color: var(--success);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(26, 32, 44, 0.95);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(26, 32, 44, 0.9);
+            color: white;
+            padding: 1rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .music-control:hover {
+            background: rgba(102, 126, 234, 0.9);
+            transform: scale(1.05);
+        }
+
+        .music-icon {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Music Control -->
+    <div class="music-control" onclick="toggleMusic()">
+        <i class="fas fa-music music-icon"></i>
+        <span id="musicStatus">Playing</span>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="https://www.bensound.com/bensound-music/bensound-ukulele.mp3" type="audio/mpeg">
+        <source src="https://www.bensound.com/bensound-music/bensound-ukulele.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-laptop"></i>
+                TechVerse
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Selamat Datang di TechVerse</h1>
+        <p>Temukan Gadget Impianmu dengan Harga Terbaik</p>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Cari produk favoritmu..." onkeyup="searchProducts()">
+            <button onclick="searchProducts()">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="category-tabs">
+            <div class="category-tab active" onclick="filterCategory('all')">Semua</div>
+            <div class="category-tab" onclick="filterCategory('smartphone')">Smartphone</div>
+            <div class="category-tab" onclick="filterCategory('laptop')">Laptop</div>
+            <div class="category-tab" onclick="filterCategory('tablet')">Tablet</div>
+            <div class="category-tab" onclick="filterCategory('accessories')">Aksesoris</div>
+            <div class="category-tab" onclick="filterCategory('gaming')">Gaming</div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products-container" id="products">
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be loaded here -->
+        </div>
+        <div class="spinner" id="spinner"></div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Keranjang Belanja</h2>
+            <i class="fas fa-times cart-close" onclick="toggleCart()"></i>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">Rp 0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-credit-card"></i> Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification success" id="notification">
+        <i class="fas fa-check-circle notification-icon"></i>
+        <div>
+            <strong>Berhasil!</strong>
+            <p id="notificationText">Produk ditambahkan ke keranjang</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang TechVerse</h3>
+                <p>Toko gadget terlengkap dengan harga terbaik dan kualitas terjamin. Kami menyediakan berbagai macam produk teknologi terkini.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Link Cepat</h3>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#">Promo</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Karir</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Layanan Pelanggan</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Pengiriman</a></li>
+                    <li><a href="#">Pengembalian</a></li>
+                    <li><a href="#">Garansi</a></li>
+                    <li><a href="#">Metode Pembayaran</a></li>
+                </ul>
+            </div>
+            <div class="footer-section" id="contact">
+                <h3>Kontak Kami</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+                    <li><i class="fas fa-phone"></i> +62 812-3456-7890</li>
+                    <li><i class="fas fa-envelope"></i> info@techverse.com</li>
+                    <li><i class="fas fa-clock"></i> Senin - Sabtu: 09:00 - 21:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechVerse. All rights reserved. Made with <i class="fas fa-heart" style="color: #f56565;"></i> in Indonesia</p>
+        </div>
+    </footer>
+
+    <script>
+        // Products Data
+        const products = [
+            // Smartphones
+            { id: 1, name: "iPhone 15 Pro Max", category: "smartphone", price: 24999000, description: "Smartphone premium dengan chip A17 Pro", rating: 5, icon: "fa-mobile-alt" },
+            { id: 2, name: "Samsung Galaxy S24 Ultra", category: "smartphone", price: 22999000, description: "Flagship Android dengan S Pen", rating: 5, icon: "fa-mobile-alt" },
+            { id: 3, name: "Xiaomi 14 Pro", category: "smartphone", price: 12999000, description: "Flagship killer dengan kamera Leica", rating: 4, icon: "fa-mobile-alt" },
+            { id: 4, name: "Google Pixel 8 Pro", category: "smartphone", price: 15999000, description: "AI photography terbaik", rating: 4, icon: "fa-mobile-alt" },
+            { id: 5, name: "OnePlus 12", category: "smartphone", price: 14999000, description: "Performance beast dengan 100W charging", rating: 4, icon: "fa-mobile-alt" },
+            
+            // Laptops
+            { id: 6, name: "MacBook Pro 16\" M3", category: "laptop", price: 45999000, description: "Laptop profesional terkuat", rating: 5, icon: "fa-laptop" },
+            { id: 7, name: "Dell XPS 15", category: "laptop", price: 28999000, description: "Windows laptop premium", rating: 4, icon: "fa-laptop" },
+            { id: 8, name: "ASUS ROG Zephyrus", category: "laptop", price: 32999000, description: "Gaming laptop tipis dan powerful", rating: 5, icon: "fa-laptop" },
+            { id: 9, name: "Lenovo ThinkPad X1", category: "laptop", price: 24999000, description: "Business laptop terbaik", rating: 4, icon: "fa-laptop" },
+            { id: 10, name: "HP Spectre x360", category: "laptop", price: 21999000, description: "2-in-1 laptop yang elegan", rating: 4, icon: "fa-laptop" },
+            
+            // Tablets
+            { id: 11, name: "iPad Pro 12.9\"", category: "tablet", price: 18999000, description: "Tablet profesional dengan M2 chip", rating: 5, icon: "fa-tablet-alt" },
+            { id: 12, name: "Samsung Galaxy Tab S9 Ultra", category: "tablet", price: 15999000, description: "Tablet Android terbesar", rating: 4, icon: "fa-tablet-alt" },
+            { id: 13, name: "Microsoft Surface Pro 9", category: "tablet", price: 17999000, description: "2-in-1 tablet laptop", rating: 4, icon: "fa-tablet-alt" },
+            { id: 14, name: "Xiaomi Pad 6", category: "tablet", price: 5999000, description: "Tablet mid-range terbaik", rating: 4, icon: "fa-tablet-alt" },
+            
+            // Accessories
+            { id: 15, name: "AirPods Pro 2", category: "accessories", price: 3999000, description: "TWS dengan ANC terbaik", rating: 5, icon: "fa-headphones" },
+            { id: 16, name: "Sony WH-1000XM5", category: "accessories", price: 4999000, description: "Headphone ANC premium", rating: 5, icon: "fa-headphones" },
+            { id: 17, name: "Apple Watch Ultra 2", category: "accessories", price: 12999000, description: "Smartwatch untuk petualangan", rating: 5, icon: "fa-clock" },
+            { id: 18, name: "Samsung Galaxy Watch 6", category: "accessories", price: 4999000, description: "Smartwatch Android terbaik", rating: 4, icon: "fa-clock" },
+            { id: 19, name: "Logitech MX Master 3S", category: "accessories", price: 1499000, description: "Mouse wireless untuk produktivitas", rating: 4, icon: "fa-computer-mouse" },
+            { id: 20, name: "Anker PowerCore 20000", category: "accessories", price: 899000, description: "Powerbank kapasitas besar", rating: 4, icon: "fa-battery-full" },
+            
+            // Gaming
+            { id: 21, name: "PlayStation 5", category: "gaming", price: 8999000, description: "Console gaming next-gen", rating: 5, icon: "fa-gamepad" },
+            { id: 22, name: "Xbox Series X", category: "gaming", price: 8499000, description: "Console gaming powerful", rating: 5, icon: "fa-gamepad" },
+            { id: 23, name: "Nintendo Switch OLED", category: "gaming", price: 5499000, description: "Hybrid gaming console", rating: 4, icon: "fa-gamepad" },
+            { id: 24, name: "Steam Deck", category: "gaming", price: 7499000, description: "PC gaming portable", rating: 4, icon: "fa-gamepad" },
+            { id: 25, name: "RTX 4090", category: "gaming", price: 32999000, description: "GPU gaming terkuat", rating: 5, icon: "fa-tv" }
+        ];
+
+        // Cart
+        let cart = [];
+        let currentCategory = 'all';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts('all');
+            updateCartCount();
+            
+            // Autoplay music
+            const music = document.getElementById('bgMusic');
+            music.volume = 0.3;
+            music.play().catch(e => {
+                console.log('Autoplay prevented:', e);
+            });
+        });
+
+        // Load Products
+        function loadProducts(category) {
+            const grid = document.getElementById('productsGrid');
+            const spinner = document.getElementById('spinner');
+            
+            // Show spinner
+            spinner.style.display = 'block';
+            grid.innerHTML = '';
+            
+            setTimeout(() => {
+                const filteredProducts = category === 'all' 
+                    ? products 
+                    : products.filter(p => p.category === category);
+                
+                filteredProducts.forEach(product => {
+                    const card = createProductCard(product);
+                    grid.appendChild(card);
+                });
+                
+                spinner.style.display = 'none';
+            }, 500);
+        }
+
+        // Create Product Card
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-image">
+                    <i class="fas ${product.icon}"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-rating">
+                        ${generateStars(product.rating)}
+                    </div>
+                    <div class="product-price">Rp ${product.price.toLocaleString('id-ID')}</div>
+                    <button class="add-to-cart" onclick="addToCart(${product.id})">
+                        <i class="fas fa-shopping-cart"></i>
+                        Tambah ke Keranjang
+                    </button>
+                </div>
+            `;
+            return card;
+        }
+
+        // Generate Stars
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="fas fa-star star"></i>';
+                } else {
+                    stars += '<i class="far fa-star star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        // Filter Category
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadProducts(category);
+        }
+
+        // Search Products
+        function searchProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const grid = document.getElementById('productsGrid');
+            
+            if (searchTerm === '') {
+                loadProducts(currentCategory);
+                return;
+            }
+            
+            const filteredProducts = products.filter(p => 
+                p.name.toLowerCase().includes(searchTerm) ||
+                p.description.toLowerCase().includes(searchTerm)
+            );
+            
+            grid.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const card = createProductCard(product);
+                grid.appendChild(card);
+            });
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${product.name} ditambahkan ke keranjang!`);
+        }
+
+        // Update Cart
+        function updateCart() {
+            updateCartCount();
+            renderCartItems();
+            updateCartTotal();
+        }
+
+        // Update Cart Count
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        // Render Cart Items
+        function renderCartItems() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; padding: 2rem; color: #718096;">Keranjang kosong</p>';
+                return;
+            }
+            
+            cartItemsContainer.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <i class="fas ${item.icon}"></i>
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">Rp ${item.price.toLocaleString('id-ID')}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            <button class="quantity-btn" onclick="removeFromCart(${item.id})" style="margin-left: 1rem; background: #f56565; color: white; border-color: #f56565;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update Quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCart();
+                }
+            }
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+            showNotification('Produk dihapus dari keranjang');
+        }
+
+        // Update Cart Total
+        function updateCartTotal() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotal').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+
+        // Toggle Cart
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Keranjang masih kosong!');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            if (confirm(`Total pembayaran: Rp ${total.toLocaleString('id-ID')} untuk ${itemCount} produk. Lanjutkan checkout?`)) {
+                cart = [];
+                updateCart();
+                toggleCart();
+                showNotification('Checkout berhasil! Terima kasih telah berbelanja.');
+            }
+        }
+
+        // Show Notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Toggle Music
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const musicStatus = document.getElementById('musicStatus');
+            
+            if (music.paused) {
+                music.play();
+                musicStatus.textContent = 'Playing';
+            } else {
+                music.pause();
+                musicStatus.textContent = 'Paused';
+            }
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animation
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 32, 44, 0.98)';
+            } else {
+                header.style.background = 'rgba(26, 32, 44, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
